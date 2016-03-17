@@ -1,0 +1,19 @@
+Package: googleID
+Title: Authenticate users via the Google+ API
+Version: 0.0.9001
+Authors@R: c(person("Mark", "Edmondson",email = "r@sunholo.com",
+                  role = c("aut", "cre")))
+Description: Interface with Google+ API,
+    this uses googleAuthR as a backend so is compatible with similar packages.
+License: MIT + file LICENSE
+LazyData: TRUE
+Depends:
+    R (>= 3.2.0)
+Imports:
+    googleAuthR (>= 0.2.0)
+Suggests:
+    shiny (>= 0.12.1),
+    jsonlite (>= 0.9.19),
+    httr (>= 1.1.0),
+    knitr
+RoxygenNote: 5.0.1

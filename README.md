@@ -15,6 +15,9 @@ googleAuthR::gar_auth()
 ## default is user logged in
 user <- get_user_info()
 
+## to use in a shiny app:
+user <- with_shiny(get_user_info)
+
 > str(user)
 List of 24
  $ kind          : chr "plus#person"

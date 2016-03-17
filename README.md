@@ -3,12 +3,12 @@ Authentication and identifying Google users using Google+ API
 
 ## Example
 
-Activate [Google+ API first here](https://console.developers.google.com/apis/api/plus/overview)
+Activate [Google+ API here](https://console.developers.google.com/apis/api/plus/overview)
 
 ```r
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",                                              "https://www.googleapis.com/auth/userinfo.profile"))
+options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"))
 
 googleAuthR::gar_auth()
 

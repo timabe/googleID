@@ -72,7 +72,8 @@ List of 24
 library(shiny)
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"))
+options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
+                                        "https://www.googleapis.com/auth/userinfo.profile"))
 
 
 ui <- shinyUI(fluidPage(

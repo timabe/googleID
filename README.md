@@ -8,7 +8,8 @@ Activate [Google+ API here](https://console.developers.google.com/apis/api/plus/
 ```r
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"))
+options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
+                                        "https://www.googleapis.com/auth/userinfo.profile"))
 
 googleAuthR::gar_auth()
 

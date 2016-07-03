@@ -17,4 +17,23 @@ https://developers.google.com/+/web/api/rest/latest/people#resource-representati
 \description{
 Get the logged in user's email and other info
 }
+\examples{
+
+\dontrun{
+library(googleAuthR)
+library(googleID)
+options(googleAuthR.scopes.selected = 
+   c("https://www.googleapis.com/auth/userinfo.email",
+     "https://www.googleapis.com/auth/userinfo.profile"))
+                                        
+googleAuthR::gar_auth()
+
+## default is user logged in
+user <- get_user_info()
+}
+
+}
+\seealso{
+https://developers.google.com/+/web/api/rest/latest/people
+}
 

@@ -1,4 +1,7 @@
 # googleID
+
+[![Travis-CI Build Status](https://travis-ci.org/MarkEdmondson1234/googleID.svg?branch=master)](https://travis-ci.org/MarkEdmondson1234/googleID)
+
 Authentication and identifying Google users using Google+ API
 
 ## Example
@@ -114,4 +117,32 @@ server <- shinyServer(function(input, output, session) {
 # Run the application 
 shinyApp(ui = ui, server = server)
 
+```
+
+## Whitelist
+
+The function `whitelist()` can be used to return TRUE or FALSE is the user is on a supplied list.
+
+You can supply the whitelist as a character vector, which could be imported from a file or similar.
+
+To use, pass the user object to the function with the whitelist like this:
+
+```r
+library(googleAuthR)
+library(googleID)
+options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
+                                        "https://www.googleapis.com/auth/userinfo.profile"))
+
+googleAuthR::gar_auth()
+
+## default is user logged in
+user <- get_user_info()
+
+the_list <- whitelist(user, c("your@email.com", "another@email.com", "yet@anotheremail.com"))
+
+if(the_list){
+  message("You are on the list.")
+} else {
+  message("If you're not on the list, you're not getting in.")
+}
 ```

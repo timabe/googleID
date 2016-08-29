@@ -119,7 +119,10 @@ shinyApp(ui = ui, server = server)
 
 ```
 
-You can also login via javascript in RMarkdown documents, but this requires the dev version of googleAuthR.  A demo and how to of this is available in this RMarkdown document: https://mark.shinyapps.io/googleAuthRMarkdown/
+## Shiny/RMarkdown via JavaScript auth plugin
+
+Alternatively, you can also login via javascript in RMarkdown documents, but this requires the dev version of googleAuthR.  
+A demo and how to of this is available in this RMarkdown document: https://mark.shinyapps.io/googleAuthRMarkdown/
 
 ## Whitelist
 

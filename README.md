@@ -119,6 +119,8 @@ shinyApp(ui = ui, server = server)
 
 ```
 
+You can also login via javascript in RMarkdown documents, but this requires the dev version of googleAuthR.  A demo and how to of this is available in this RMarkdown document: https://mark.shinyapps.io/googleAuthRMarkdown/
+
 ## Whitelist
 
 The function `whitelist()` can be used to return TRUE or FALSE is the user is on a supplied list.

@@ -83,25 +83,26 @@ library(shiny)
 library(googleAuthR)
 library(googleID)
 
-## set your client ID/secret and scopes
-gar_set_client("location_of_client.json",
-               scopes = c("https://www.googleapis.com/auth/userinfo.email",
-                          "https://www.googleapis.com/auth/userinfo.profile"))
-                          
+# set scopes
+gar_set_client(scopes = c("https://www.googleapis.com/auth/userinfo.email",
+                                       "https://www.googleapis.com/auth/userinfo.profile"))
 
+## set your web app client ID/secret and scopes
+options(googleAuthR.webapp.client_id = getOption("googleAuthR.client_id"),
+        googleAuthR.webapp.client_secret = getOption("googleAuthR.client_secret"))
 
 ui <- shinyUI(fluidPage(
-   
+  
   googleAuthUI("example1"),
   p("Logged in as: ", textOutput("user_name"))
-
+  
 ))
 
 
 server <- shinyServer(function(input, output, session) {
-
+  
   access_token <- callModule(googleAuth, "example1")
-   
+  
   ## to use in a shiny app:
   user_details <- reactive({
     validate(
@@ -109,7 +110,7 @@ server <- shinyServer(function(input, output, session) {
     )
     
     with_shiny(get_user_info, shiny_access_token = access_token())
-          
+    
   })
   
   output$user_name <- renderText({
@@ -118,9 +119,9 @@ server <- shinyServer(function(input, output, session) {
     )
     
     user_details()$displayName
-  
+    
   })
-
+  
   
 })
 

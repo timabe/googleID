@@ -8,12 +8,18 @@ Authentication and identifying Google users using Google+ API
 
 Activate [Google+ API here](https://console.developers.google.com/apis/api/plus/overview)
 
+Download your Google Project's client JSON as detailed in [googleAuthR help](http://code.markedmondson.me/googleAuthR/articles/google-authentication-types.html#setting-the-client-via-google-cloud-client-json)
+
 ```r
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
-                                        "https://www.googleapis.com/auth/userinfo.profile"))
 
+## set your client ID/secret and scopes
+gar_set_client("location_of_client.json",
+               scopes = c("https://www.googleapis.com/auth/userinfo.email",
+                          "https://www.googleapis.com/auth/userinfo.profile"))
+
+# or if you have downloaded service auth JSON, gar_service_auth()
 googleAuthR::gar_auth()
 
 ## default is user logged in

@@ -20,7 +20,7 @@ gar_set_client("location_of_client.json",
                           "https://www.googleapis.com/auth/userinfo.profile"))
 
 # or if you have downloaded service auth JSON, gar_service_auth()
-googleAuthR::gar_auth()
+gar_auth()
 
 ## default is user logged in
 user <- get_user_info()
@@ -151,7 +151,7 @@ gar_set_client("location_of_client.json",
                scopes = c("https://www.googleapis.com/auth/userinfo.email",
                           "https://www.googleapis.com/auth/userinfo.profile"))
 
-googleAuthR::gar_auth()
+gar_auth()
 
 ## default is user logged in
 user <- get_user_info()

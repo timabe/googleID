@@ -82,8 +82,12 @@ List of 24
 library(shiny)
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
-                                        "https://www.googleapis.com/auth/userinfo.profile"))
+
+## set your client ID/secret and scopes
+gar_set_client("location_of_client.json",
+               scopes = c("https://www.googleapis.com/auth/userinfo.email",
+                          "https://www.googleapis.com/auth/userinfo.profile"))
+                          
 
 
 ui <- shinyUI(fluidPage(
@@ -141,8 +145,11 @@ To use, pass the user object to the function with the whitelist like this:
 ```r
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
-                                        "https://www.googleapis.com/auth/userinfo.profile"))
+
+## set your client ID/secret and scopes
+gar_set_client("location_of_client.json",
+               scopes = c("https://www.googleapis.com/auth/userinfo.email",
+                          "https://www.googleapis.com/auth/userinfo.profile"))
 
 googleAuthR::gar_auth()
 

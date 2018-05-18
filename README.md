@@ -33,7 +33,7 @@ List of 24
  $ skills        : chr "Google Analytics, Adobe Marketing Cloud, R, Python, SEO, Google Cloud, Statistics, Music"
  $ gender        : chr "male"
  $ emails        :'data.frame':	1 obs. of  2 variables:
-  ..$ value: chr "me@markedmondson.me"
+  ..$ value: chr "x@xxxx.xx"
   ..$ type : chr "account"
  $ urls          :'data.frame':	5 obs. of  3 variables:
   ..$ value: chr [1:5] "http://twitter.com/holomarked" "http://www.linkedin.com/in/markpeteredmondson" "https://github.com/MarkEdmondson1234" "http://stackoverflow.com/users/3878063/marked" ...

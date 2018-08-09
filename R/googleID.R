@@ -88,7 +88,9 @@ whitelist <- function(user_info, whitelist = NULL){
     out <- TRUE
   }
   
-  check <- user_info$emails$value
+  # google emails are case insensitive
+  whitelist <- tolower(whitelist)
+  check <- tolower(user_info$emails$value)
   
   if(is.null(check)){
     stop("No user email found")

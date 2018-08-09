@@ -8,13 +8,19 @@ Authentication and identifying Google users using Google+ API
 
 Activate [Google+ API here](https://console.developers.google.com/apis/api/plus/overview)
 
+Download your Google Project's client JSON as detailed in [googleAuthR help](http://code.markedmondson.me/googleAuthR/articles/google-authentication-types.html#setting-the-client-via-google-cloud-client-json)
+
 ```r
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
-                                        "https://www.googleapis.com/auth/userinfo.profile"))
 
-googleAuthR::gar_auth()
+## set your client ID/secret and scopes
+gar_set_client("location_of_client.json",
+               scopes = c("https://www.googleapis.com/auth/userinfo.email",
+                          "https://www.googleapis.com/auth/userinfo.profile"))
+
+# or if you have downloaded service auth JSON, gar_service_auth()
+gar_auth()
 
 ## default is user logged in
 user <- get_user_info()
@@ -27,7 +33,7 @@ List of 24
  $ skills        : chr "Google Analytics, Adobe Marketing Cloud, R, Python, SEO, Google Cloud, Statistics, Music"
  $ gender        : chr "male"
  $ emails        :'data.frame':	1 obs. of  2 variables:
-  ..$ value: chr "me@markedmondson.me"
+  ..$ value: chr "x@xxxx.xx"
   ..$ type : chr "account"
  $ urls          :'data.frame':	5 obs. of  3 variables:
   ..$ value: chr [1:5] "http://twitter.com/holomarked" "http://www.linkedin.com/in/markpeteredmondson" "https://github.com/MarkEdmondson1234" "http://stackoverflow.com/users/3878063/marked" ...
@@ -76,22 +82,27 @@ List of 24
 library(shiny)
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
-                                        "https://www.googleapis.com/auth/userinfo.profile"))
 
+# set scopes
+gar_set_client(scopes = c("https://www.googleapis.com/auth/userinfo.email",
+                                       "https://www.googleapis.com/auth/userinfo.profile"))
+
+## set your web app client ID/secret and scopes
+options(googleAuthR.webapp.client_id = getOption("googleAuthR.client_id"),
+        googleAuthR.webapp.client_secret = getOption("googleAuthR.client_secret"))
 
 ui <- shinyUI(fluidPage(
-   
+  
   googleAuthUI("example1"),
   p("Logged in as: ", textOutput("user_name"))
-
+  
 ))
 
 
 server <- shinyServer(function(input, output, session) {
-
+  
   access_token <- callModule(googleAuth, "example1")
-   
+  
   ## to use in a shiny app:
   user_details <- reactive({
     validate(
@@ -99,7 +110,7 @@ server <- shinyServer(function(input, output, session) {
     )
     
     with_shiny(get_user_info, shiny_access_token = access_token())
-          
+    
   })
   
   output$user_name <- renderText({
@@ -108,9 +119,9 @@ server <- shinyServer(function(input, output, session) {
     )
     
     user_details()$displayName
-  
+    
   })
-
+  
   
 })
 
@@ -135,10 +146,13 @@ To use, pass the user object to the function with the whitelist like this:
 ```r
 library(googleAuthR)
 library(googleID)
-options(googleAuthR.scopes.selected = c("https://www.googleapis.com/auth/userinfo.email",
-                                        "https://www.googleapis.com/auth/userinfo.profile"))
 
-googleAuthR::gar_auth()
+## set your client ID/secret and scopes
+gar_set_client("location_of_client.json",
+               scopes = c("https://www.googleapis.com/auth/userinfo.email",
+                          "https://www.googleapis.com/auth/userinfo.profile"))
+
+gar_auth()
 
 ## default is user logged in
 user <- get_user_info()

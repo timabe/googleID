@@ -96,7 +96,7 @@ whitelist <- function(user_info, whitelist = NULL){
     stop("No user email found")
   }
   
-  if(any(check %in% whitelist)){
+  if(any(stringr::str_detect(check, whitelist))) {
     message(check, " is in whitelist ")
     out <- TRUE
   } else {
